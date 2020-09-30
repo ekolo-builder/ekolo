@@ -1,0 +1,29 @@
+{
+    "name": "ekolobuilder/ekolo",
+    "description": "Open PHP Framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ekolo Builder",
+            "email": "ekolobuilder@gmail.com"
+        },
+        {
+            "name": "Don de Dieu BOLENGE",
+            "email": "dondedieubolenge@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "ekolobuilder/eko-http": "^0.0.1",
+        "ekolobuilder/eko-routing": "^0.0.1"
+    },
+    "autoload": {
+        "files": [
+            "src/Functions/Helpers.php"
+        ],
+        "psr-4": {
+            "Ekolo\\Builder\\": "src/"
+        }
+    }
+}
