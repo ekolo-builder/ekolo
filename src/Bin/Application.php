@@ -227,40 +227,80 @@
         /**
          * Execute the route of the GET method by the url
          * @param string $url
-         * @param $actions
+         * @param $callbacks
          */
-        public function get(string $url, ...$actions)
+        public function get(string $url, ...$callbacks)
         {
-            $this->registarMethodDirect('GET', $url, $actions);
+            $this->registarMethodDirect('GET', $url, $callbacks);
         }
 
         /**
          * Execute the route of the POST method by the url
          * @param string $url
-         * @param $actions
+         * @param $callbacks
          */
-        public function post(string $url, ...$actions)
+        public function post(string $url, ...$callbacks)
         {
-            $this->registarMethodDirect('POST', $url, $actions);
+            $this->registarMethodDirect('POST', $url, $callbacks);
         }
 
         /**
          * Execute the route of the PUT method by the url
          * @param string $url
-         * @param $actions
+         * @param $callbacks
          */
-        public function put(string $url, ...$actions)
+        public function put(string $url, ...$callbacks)
         {
-            $this->registarMethodDirect('PUT', $url, $actions);
+            $this->registarMethodDirect('PUT', $url, $callbacks);
         }
 
         /**
          * Execute the route of the DELETE method by the url
          * @param string $url
-         * @param $actions
+         * @param $callbacks
          */
-        public function delete(string $url, ...$actions)
+        public function delete(string $url, ...$callbacks)
         {
-            $this->registarMethodDirect('DELETE', $url, $actions);
+            $this->registarMethodDirect('DELETE', $url, $callbacks);
+        }
+
+        /**
+         * It records the route of the HEAD method
+         * @param string $uri
+         * @param \Closure $callbacks
+         */
+        public function head(string $uri, ...$callbacks)
+        {
+            $this->registarMethodDirect('HEAD', $uri, $callbacks);
+        }
+
+        /**
+         * It records the route of the CONNECT method
+         * @param string $uri
+         * @param \Closure $callbacks
+         */
+        public function connect(string $uri, ...$callbacks)
+        {
+            $this->registarMethodDirect('CONNECT', $uri, $callbacks);
+        }
+
+        /**
+         * It records the route of the OPTIONS method
+         * @param string $uri
+         * @param \Closure $callbacks
+         */
+        public function options(string $uri, ...$callbacks)
+        {
+            $this->registarMethodDirect('OPTIONS', $uri, $callbacks);
+        }
+
+        /**
+         * It records the route of the TRACE method
+         * @param string $uri
+         * @param \Closure $callbacks
+         */
+        public function trace(string $uri, ...$callbacks)
+        {
+            $this->registarMethodDirect('TRACE', $uri, $callbacks);
         }
     }

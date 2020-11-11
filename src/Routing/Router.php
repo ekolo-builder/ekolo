@@ -110,7 +110,6 @@ class Router extends RouteRegistar
      */
     public function get(string $uri, ...$callbacks)
     {
-        // \debug($callbacks);
         $this->registrarRoute('GET', $uri, $callbacks);
     }
 
@@ -142,5 +141,45 @@ class Router extends RouteRegistar
     public function delete(string $uri, ...$callbacks)
     {
         $this->registrarRoute('DELETE', $uri, $callbacks);
+    }
+
+    /**
+     * It records the route of the HEAD method
+     * @param string $uri
+     * @param \Closure $callbacks
+     */
+    public function head(string $uri, ...$callbacks)
+    {
+        $this->registrarRoute('HEAD', $uri, $callbacks);
+    }
+
+    /**
+     * It records the route of the CONNECT method
+     * @param string $uri
+     * @param \Closure $callbacks
+     */
+    public function connect(string $uri, ...$callbacks)
+    {
+        $this->registrarRoute('CONNECT', $uri, $callbacks);
+    }
+
+    /**
+     * It records the route of the OPTIONS method
+     * @param string $uri
+     * @param \Closure $callbacks
+     */
+    public function options(string $uri, ...$callbacks)
+    {
+        $this->registrarRoute('OPTIONS', $uri, $callbacks);
+    }
+
+    /**
+     * It records the route of the TRACE method
+     * @param string $uri
+     * @param \Closure $callbacks
+     */
+    public function trace(string $uri, ...$callbacks)
+    {
+        $this->registrarRoute('TRACE', $uri, $callbacks);
     }
 }
