@@ -199,4 +199,68 @@
         {
             $this->paths[$pathName] = $value;
         }
+
+        /**
+         * Allows to register a route on application directly
+         * @param string $method
+         * @param string $url
+         * @param mixed $actions
+         */
+        public function registarMethodDirect(string $method, string $url, ...$actions)
+        {
+            $methodExecute = strtolower($method);
+            $router = new Router;
+            $routesList = \explode('/', $url);
+            $prefixeUri = '/'.$routesList[1];
+            
+            if (!is_callable([$router, $methodExecute])) {
+                throw new \Exception("The ".$methodExecute." is not supported by Ekolo Builder");
+            }
+
+            $callbacks = $actions[0];
+
+            $router->$methodExecute($url, $callbacks);
+
+            $this->use('/', $router);
+        }
+
+        /**
+         * Execute the route of the GET method by the url
+         * @param string $url
+         * @param $actions
+         */
+        public function get(string $url, ...$actions)
+        {
+            $this->registarMethodDirect('GET', $url, $actions);
+        }
+
+        /**
+         * Execute the route of the POST method by the url
+         * @param string $url
+         * @param $actions
+         */
+        public function post(string $url, ...$actions)
+        {
+            $this->registarMethodDirect('POST', $url, $actions);
+        }
+
+        /**
+         * Execute the route of the PUT method by the url
+         * @param string $url
+         * @param $actions
+         */
+        public function put(string $url, ...$actions)
+        {
+            $this->registarMethodDirect('PUT', $url, $actions);
+        }
+
+        /**
+         * Execute the route of the DELETE method by the url
+         * @param string $url
+         * @param $actions
+         */
+        public function delete(string $url, ...$actions)
+        {
+            $this->registarMethodDirect('DELETE', $url, $actions);
+        }
     }

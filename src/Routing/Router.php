@@ -63,6 +63,14 @@ class Router extends RouteRegistar
      */
     public function registrarRoute(string $method, string $url, ...$callbacks)
     {
+        if (is_array($callbacks)) {
+            while (!\is_callable($callbacks[0])) {
+                $callbacks = $callbacks[0];
+            }
+        }
+
+        // debug($callbacks);
+        
         $regexVarUrl = '#:([a-zA-Z]{1,})+([a-zA-Z0-9_\-]{1,})?#';
 
         $urlRegexed = preg_replace($regexVarUrl, '([a-zA-Z0-9_\-]{1,})', $url);
@@ -102,6 +110,7 @@ class Router extends RouteRegistar
      */
     public function get(string $uri, ...$callbacks)
     {
+        // \debug($callbacks);
         $this->registrarRoute('GET', $uri, $callbacks);
     }
 

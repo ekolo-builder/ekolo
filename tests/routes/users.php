@@ -12,4 +12,6 @@
         ]);
     });
 
+    // debug($router);
+
     return $router;

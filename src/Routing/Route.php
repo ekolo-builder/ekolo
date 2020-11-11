@@ -124,7 +124,7 @@ class Route
      */
     public function actions()
     {
-        return $this->actions[0];
+        return $this->actions;
     }
 
     /**
