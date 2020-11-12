@@ -7,10 +7,11 @@
     $app = new Application;
 
     // routers
-    // $users = require('./routes/users.php');
+    $users = require('./routes/users.php');
 
-    // view engine setup
+    // set configuration of file folders
     $app->set('views', 'views');
+    $app->set('public', 'public');
 
     // Middlwares
     $app->use(function ($req, $res) {
@@ -18,10 +19,13 @@
     });
 
     // routing
-    // $app->use('/users', $users);
-    $app->get('/commandes/mm/mm', function ($req, $res) { echo "Cooooolll"; }, function ($req, $res) {
-        $res->send("Salut");
+    $app->get('/', function ($req, $res) {
+        $res->render('index', [
+            'title' => 'Welcome to <span>Ekolo Builder</span>',
+            'message' => 'Flexible, quick and easy to develop'
+        ]);
     });
+    $app->use('/users', $users);
 
     // error handler
     $app->trackErrors(function ($error, $req, $res) {

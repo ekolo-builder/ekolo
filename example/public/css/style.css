@@ -1,0 +1,23 @@
+body {
+    padding: 5% 10%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.btn {
+    padding: 5px 15px;
+}
+
+.btn-primary {
+    border: 1px solid rgb(37, 61, 170);
+    background-color: rgb(37, 61, 170);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    transition: all linear .04s;
+    background-color: rgb(4, 33, 161);
+}
+
+.title span {
+    color: rgb(4, 33, 161) !important;
+}
