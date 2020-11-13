@@ -141,6 +141,7 @@
             if ($route->vars()) {
                 if (count($route->vars()) > 0) {
                     $_GET = array_merge($_GET, $route->vars());
+                    $this->request->params()->add($_GET);
                 }
             }
 

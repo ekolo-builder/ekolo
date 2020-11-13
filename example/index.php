@@ -66,8 +66,48 @@
         ]);
     });
 
+     $app->get('/list/:id', function ($req, $res) {
+        
+        $users = [
+            [
+                'id' => 1,
+                'name' => "Ambulasi",
+                'firstName' => "Clovis",
+            ],
+            [
+                'id' => 2,
+                'name' => "Ambulasi",
+                'firstName' => "Divine",
+            ],
+            [
+                'id' => 3,
+                'name' => "Mampuya",
+                'firstName' => "Gladis",
+            ],
+            [
+                'id' => 4,
+                'name' => "Mampuya",
+                'firstName' => "Gloria",
+            ],
+            [
+                'id' => 5,
+                'name' => "Etokila",
+                'firstName' => "Chico",
+            ],
+            [
+                'id' => 6,
+                'name' => "Etokila",
+                'firstName' => "Diani",
+            ]
+        ];
+
+        $res->render('detail', [
+            'user' => $users[$req->params->id]
+        ]);
+    });
+
     $app->post('/list', function ($req, $res) {
-        debug($req->body()->all());
+        debug($req->body()->name);
     });
 
     // error handler

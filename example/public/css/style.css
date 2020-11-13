@@ -21,3 +21,7 @@ body {
 .title span {
     color: rgb(4, 33, 161) !important;
 }
+
+.text-primary {
+    color: rgb(37, 61, 170) !important;
+}
