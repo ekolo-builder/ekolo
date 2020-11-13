@@ -11,3 +11,5 @@ $ composer require ekolobuilder/ekolo
 ```
 
 ## API
+
+* [Installation](installation)
