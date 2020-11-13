@@ -4,4 +4,4 @@
 
 ## API
 
-* [Installation](https://github.com/ekolo-builder/ekolo/installation)
+* [Installation](https://github.com/ekolo-builder/ekolo/Installation.md)
