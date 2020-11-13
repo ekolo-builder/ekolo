@@ -58,6 +58,12 @@
         protected $actionsExecuted = [];
 
         /**
+         * Track if intercept the 404 error
+         * @var bool
+         */
+        protected $interceptError404 = false;
+
+        /**
          * The paths adress
          * @var string
          */
@@ -137,6 +143,13 @@
             $actions_exected = [];
 
             if (!empty($actions)) {
+                
+                if ($this->error) {
+                    if ($this->error->status == 404) {
+                        $this->interceptError404 = true;
+                    }
+                }
+
                 $ip = 0;
                 foreach ($actions as $action) {
                     $ip++;
@@ -172,6 +185,12 @@
         public function trackErrors($callback)
         {
             if (!empty($this->error)) {
+                if ($this->error->status == 404) {
+                    if ($this->interceptError404) {
+                        exit;
+                    }
+                }
+                
                 $callback($this->error, $this->request, $this->response);
             }
         }
