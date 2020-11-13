@@ -13,5 +13,11 @@
     <p>Please click on the link below to view the documentantion</p>
 
     <p><a href="" class="btn btn-primary">Documentation</a></p>
+
+    <form action="/list" method="post">
+        <p><input type="text" name="name"></p>
+        <p><input type="text" name="firstName"></p>
+        <p><button type="submit">Valider</button></p>
+    </form>
 </body>
 </html>

@@ -212,16 +212,23 @@
             $router = new Router;
             $routesList = \explode('/', $url);
             $prefixeUri = '/'.$routesList[1];
+            $url = \str_replace($prefixeUri, '', $url);
+            
+            if (empty($url)) {
+                $url = '/';
+            }
             
             if (!is_callable([$router, $methodExecute])) {
                 throw new \Exception("The ".$methodExecute." is not supported by Ekolo Builder");
             }
 
+            // debug($prefixeUri);  
+
             $callbacks = $actions[0];
 
             $router->$methodExecute($url, $callbacks);
 
-            $this->use('/', $router);
+            $this->use($prefixeUri, $router);
         }
 
         /**

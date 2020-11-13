@@ -25,6 +25,11 @@
             'message' => 'Flexible, quick and easy to develop'
         ]);
     });
+
+    $app->post('/list', function ($req, $res) {
+        debug($req->body()->all());
+    });
+
     $app->use('/users', $users);
 
     // error handler
