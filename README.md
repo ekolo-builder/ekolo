@@ -12,4 +12,4 @@ $ composer require ekolobuilder/ekolo
 
 ## API
 
-* [Installation](installation)
+* [Installation](/installation)
