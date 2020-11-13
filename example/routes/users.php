@@ -7,6 +7,7 @@
     $router = new Router;
 
     $router->get('/', function (Request $req, Response $res) {
+        $res->extends('dashboard');
         $res->render('users', [
             'title' => 'Home page users'
         ]);

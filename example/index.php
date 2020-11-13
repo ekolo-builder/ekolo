@@ -12,11 +12,14 @@
     // set configuration of file folders
     $app->set('views', 'views');
     $app->set('public', 'public');
+    $app->set('template', 'layout');
 
     // Middlwares
     $app->use(function ($req, $res) {
         
     });
+
+    $app->use('/users', $users);
 
     // routing
     $app->get('/', function ($req, $res) {
@@ -66,8 +69,6 @@
     $app->post('/list', function ($req, $res) {
         debug($req->body()->all());
     });
-
-    $app->use('/users', $users);
 
     // error handler
     $app->trackErrors(function ($error, $req, $res) {

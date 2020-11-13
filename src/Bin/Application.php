@@ -133,6 +133,11 @@
         public function getController(Route $route)
         {
             $this->response->setViewsPath($this->paths['views']);
+
+            if (!empty($this->paths['template'])) {
+                $this->response->extends(($this->paths['template']));
+            }
+
             if ($route->vars()) {
                 if (count($route->vars()) > 0) {
                     $_GET = array_merge($_GET, $route->vars());
@@ -143,13 +148,8 @@
             $actions_exected = [];
 
             if (!empty($actions)) {
+                $this->interceptError404 = true;
                 
-                if ($this->error) {
-                    if ($this->error->status == 404) {
-                        $this->interceptError404 = true;
-                    }
-                }
-
                 $ip = 0;
                 foreach ($actions as $action) {
                     $ip++;
