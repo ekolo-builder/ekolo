@@ -52,4 +52,5 @@ Now install `Ekolo Builder` by typing the command ci
 $ composer require ekolobuilder/ekolo
 ```
 
-[Previous - Getting started](/)                                       [Next - Hello World](HelloWorld.md)
+[Previous - Getting started](https://github.com/ekolo-builder/ekolo)
+[Next - Hello World](HelloWorld.md)
