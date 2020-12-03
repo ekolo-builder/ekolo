@@ -11,17 +11,18 @@ use Ekolo\Builder\Http\Validator;
 
 class Request extends HTTPRequest
 {
-    public function __contruct()
-    {
-        parent::__contruct();
-        $this->validator = new Validator($this);
-    }
 
     /**
      * Data validator and their type
      * @var Validator
      */
     protected $validator;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->validator = new Validator($this);
+    }
 
     /**
      * Instance of validator

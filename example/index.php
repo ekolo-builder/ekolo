@@ -1,8 +1,10 @@
 <?php
     require __DIR__.'/../vendor/autoload.php';
 
-    use Ekolo\Builder\Routing\Router;
     use Ekolo\Builder\Bin\Application;
+    use Ekolo\Builder\Routing\Router;
+    use Ekolo\Builder\Http\Request;
+    use Ekolo\Builder\Http\Response;
 
     $app = new Application;
 
@@ -106,8 +108,17 @@
         ]);
     });
 
-    $app->post('/list', function ($req, $res) {
-        debug($req->body()->name);
+    $app->post('/list', function (Request $req, Response $res) {
+        $rules = [
+            'name' => 'required|min:5|field:Nom de famille',
+            'firstName' => 'required|max:2'
+        ];
+
+        if ($req->validator()->verify($rules)) {
+            echo "TOut est cool";
+        }else {
+            debug(session("errors"));
+        }
     });
 
     // error handler
