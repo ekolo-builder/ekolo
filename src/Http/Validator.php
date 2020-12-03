@@ -6,6 +6,7 @@
     namespace Ekolo\Builder\Http;
 
     use Ekolo\Builder\Http\Request;
+    use Ekolo\Http\Options\Bodies;
 
     /**
      * 
@@ -33,10 +34,13 @@
 
         /**
          * Check the rules to validate the sent request
+         * @param array $rules Validator rules
          * @return void
          */
-        public function verify()
+        public function verify(arrary $rules)
         {
+            $this->setRules($rules);
+
             if (!empty($this->rules)) {
                 $fields = \array_keys($this->rules);
                 $values = [];
@@ -92,9 +96,9 @@
         }
 
         /**
-         * Ajoute l'erreur
-         * @param string $field Le champ
-         * @param string $error L'erreur à ajouter
+         * Allows you to add tracked errors
+         * @param string $field The field where there is an error
+         * @param string $error The error to add
          */
         public function addError(string $field, string $error) {
             $this->errors[$field] = !empty($this->errors[$field]) 
@@ -103,7 +107,7 @@
         }
 
         /**
-         * Vérifie s'y a des erreurs
+         * Check if there are any errors in the validation made
          * @return bool
          */
         public function hasErrors()
@@ -112,9 +116,9 @@
         }
 
         /**
-         * Vérifie si la valeur du champ est une adresse email valide
-         * @param string $field
-         * @param mixed $value
+         * Checks if the field value is a valid email address
+         * @param string $field Name of this field
+         * @param string $value His value
          * @return void
          */
         public function email(string $field, $value) 
@@ -125,9 +129,9 @@
         }
 
         /**
-         * Vérifie si le champ est max qu'il faut
-         * @param string $field Le nom du champ en question
-         * @param string $value La valeur du champ
+         * Checks if the field is an integer
+         * @param string $field Name of this field
+         * @param string $value His value
          * @return bool
          */
         public function int($field, $value) 
@@ -141,10 +145,10 @@
         }
 
         /**
-         * Vérifie si le champ est au minimum qu'il faut
-         * @param string $field Le nom du champ en question
-         * @param string $value La valeur du champ
-         * @param int $minVal La valeur maximum que doit avoir le champ
+         * Checks if the field is at the minimum required
+         * @param string $field Name of this field
+         * @param string $value His value
+         * @param int $minVal The maximum value that the field must have
          * @return void
          */
         public function min(string $field, $value, $minVal) {
@@ -159,10 +163,10 @@
         }
 
         /**
-         * Vérifie si le nombre de caractère du champ est au maximum qu'il faut
-         * @param string $field Le nom du champ en question
-         * @param string $value La valeur du champ
-         * @param int $max La valeur maximum que doit avoir le champ
+         * Checks if the number of characters in the field is the maximum required
+         * @param string $field The name of this field
+         * @param string $value His value
+         * @param int $max The maximum value that the field must have
          * @return void
          */
         public function max(string $field, $value, $max) {
@@ -177,10 +181,10 @@
         }
 
         /**
-         * Vérifie si le nombre de caractère du champ est au maximum qu'il faut
-         * @param string $field Le nom du champ en question
-         * @param string $value La valeur du champ
-         * @param int $length La valeur maximum que doit avoir le champ
+         * Checks if the number of characters in the field is the maximum required
+         * @param string $field The name of this field
+         * @param string $value his value
+         * @param int $length The maximum value that the field must have
          * @return void
          */
         public function alpha(string $field, $value, $length = null) {
@@ -206,9 +210,9 @@
         }
 
         /**
-         * Vérifie si le champ est un numero de téléphone valide
-         * @param string $field Le nom du champ en question
-         * @param string $value La valeur du champ
+         * Checks if the field is a valid phone number
+         * @param string $field The name of the field
+         * @param string $value The value of the field
          * @return bool
          */
         public function tel($field, $value) 
@@ -222,9 +226,9 @@
         }
 
         /**
-         * Vérifie si le champ est numérique
-         * @param string $field Le nom du champ en question
-         * @param string $value La valeur du champ
+         * Check if the field's numeric
+         * @param string $field
+         * @param string $value
          * @return void
          */
         public function numeric($field, $value) 
@@ -237,9 +241,23 @@
             }
         }
 
+        /**
+         * Return the Bodies instance
+         * @return Bodies
+         */
         public function body()
         {
             return $this->body;
+        }
+
+        /**
+         * Modify the rules value
+         * @param array $rules
+         * @return void
+         */
+        public function setRules(array $rules = [])
+        {
+            $this->rules = $rules;
         }
     }
     
