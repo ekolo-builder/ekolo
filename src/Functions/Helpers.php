@@ -312,3 +312,28 @@
             }
         }
     }
+
+    if (!function_exists('getcookie')) {
+        /**
+         * Permet de renvoyer la valeur d'un cookie
+         * @param string $name Le nom du cookie
+         * @return array|string
+         */
+        function getcookie(string $name = null) {
+            return  !empty($name) ?
+                        !empty($_COOKIE[$name])
+                        ? $_COOKIE[$name] : null 
+                    : $_COOKIE;
+        }
+    }
+
+    if (!function_exists('format_date')) {
+        /**
+         * Permet de formater une date
+         * @param string $date_string
+         * @return array|string
+         */
+        function format_date(string $date_string = null, $format = 'd/m/Y') {
+            return date_format(new \DateTime($date_string), $format);
+        }
+    }
