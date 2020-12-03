@@ -282,23 +282,5 @@
         {
             $this->rules = $rules;
         }
-
-        /**
-         * Allows you to change the field name in the output error message
-         * @param string $field The name of this field
-         * @param string $value His value
-         * @param int $max The maximum value that the field must have
-         * @return void
-         */
-        public function field(string $name) {
-            $value = trim($value);
-            $max = (int) $max;
-
-            if (\strlen($value) > $max) {
-                $error = "maximum " . $max . " caractère" . make_to_pluriel($max);
-                
-                $this->addError($field, $error, $fieldFront);
-            }
-        }
     }
     
