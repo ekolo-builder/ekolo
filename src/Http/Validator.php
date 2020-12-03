@@ -32,22 +32,7 @@
         }
 
         /**
-         * Lance la validation des données
-         * @return void
-         */
-        public function validator()
-        {
-            $this->verify();
-
-            if ($this->hasErrors()) {
-                \session('errors', $this->errors);
-            }
-            
-            return !$this->hasErrors();
-        }
-
-        /**
-         * Vérifie les règles pour valider la requête envoyée
+         * Check the rules to validate the sent request
          * @return void
          */
         public function verify()
@@ -84,12 +69,18 @@
                     }
                 }
             }
+
+            if ($this->hasErrors()) {
+                \session('errors', $this->errors);
+            }
+            
+            return !$this->hasErrors();
         }
 
         /**
-         * Pour les champs recquis
-         * @param string $field Le champ
-         * @param mixed $value La valeur du champ
+         * For the required fields
+         * @param string $field
+         * @param mixed $value
          */
         public function required(string $field, $value)
         {
