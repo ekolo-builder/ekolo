@@ -82,6 +82,16 @@ Copy and paste this example of a simple hello world application
     });
 ```
 
+Now to launch the application, position yourself on the console at the level of the project directory and type the following :
+
+```bash
+$ php -S localhost:3000
+```
+
+You can replace the 3000 with the port of your choice.
+
+Open the address on which your application is launched in your browser
+
 [Previous - Installation](/documentation/Installation.md)
 
 [Next - Routing](/documentation/Routing.md)
