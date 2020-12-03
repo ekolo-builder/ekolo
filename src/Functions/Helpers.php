@@ -337,3 +337,91 @@
             return date_format(new \DateTime($date_string), $format);
         }
     }
+
+    if (!function_exists('create_folder')) {
+        /**
+         * Cette fonction permet de créer un dossier
+         * @param string $folder
+         * @return bool
+         */
+        function create_folder(string $folder) {
+            $array_folder = explode('/', $folder);
+            $i = 0;
+            $fold = '';
+
+            if (!file_exists($folder)) {
+                while (!file_exists($folder)) {
+                    $fold .= $array_folder[$i].= '/';
+
+                    if (!file_exists($fold)) {
+                        mkdir($fold);
+                    }
+
+                    $i++;
+                }
+            }
+
+            return file_exists($folder);
+        }
+    }
+
+    if (!function_exists('sub_string')) {
+        /**
+         * Permet de couper un text long et rajouter de pointillés
+         * @param string $string
+         * @return string
+         */
+        function sub_string (string $string, $nbr = 15) {
+
+            return strlen($string) > $nbr ? mb_substr($string, 0, $nbr).'...' : $string;
+        }
+    }
+
+    if (!function_exists('add_days_in_date')) {
+        /**
+         * Ajoute de jours dans une date
+         * @param \DateTime $date_string La date dans laquelle il faut ajouter les jours
+         * @param int $n_day Le nombre de jour à ajouter
+         * @return \DateTime
+         */
+        function add_days_in_date($date_string = null, int $n_day) {
+            $date = $date_string ? new \DateTime($date_string) : new \DateTime();
+            $date->add(new \DateInterval('P'.$n_day.'D'));
+
+            return $date;
+        }
+    }
+
+    if (!function_exists('remove_days_in_date')) {
+        /**
+         * Cette fonction permet de supprimer quelque nombre de jours dans une date
+         * @param \DateTime $date La date dans laquelle il faut ajouter les jours
+         * @param int $n_day Le nombre de jour à ajouter
+         * @return \DateTime
+         */
+        function remove_days_in_date(\DateTime $date, int $n_day) {
+            
+            date_sub($date,date_interval_create_from_date_string("$n_day days"));
+            date_format($date,"Y-m-d h:i:s");
+
+            return date_format($date,"Y-m-d h:i:s");
+        }
+    }
+
+    if (!function_exists('write_file')) {
+        /**
+         * Cette fonction permet d'écrire des informations dans un fichier
+         * @param string $filename Le lien du fichier
+         * @param string $content Le contenu à insérer dans le fichier
+         * @return bool
+         */
+        function write_file(string $filename, string $content) {
+            $success = true;
+            $file = fopen($filename, "w") or $success = false;
+
+            fwrite($file, $content);
+            fclose($file);
+
+            return $success;
+        }
+    }
