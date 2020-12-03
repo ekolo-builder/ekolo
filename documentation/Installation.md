@@ -22,6 +22,14 @@ $ composer init
 
 This command asks you for a number of things, such as the name and version of your app. For now, you can just press enter to accept the defaults.
 
+Now install `Ekolo Builder` by typing the command ci
+
+```bash
+$ composer require ekolobuilder/ekolo
+```
+
+Once you have installed Ekolo Builder you must now create some files required for the execution of your application
+
 ```bash
 $ echo "" > .htaccess
 ```
@@ -40,17 +48,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule (.*) index.php/$1 [L]
 ```
 
-Now create the application entry point `index.php` file
-
-```bash
-$ echo "" > index.php
-```
-
-Now install `Ekolo Builder` by typing the command ci
-
-```bash
-$ composer require ekolobuilder/ekolo
-```
-
 [Previous - Getting started](https://github.com/ekolo-builder/ekolo)
-[Next - Hello World](HelloWorld.md)
+
+[Next - Hello World](/documentation/HelloWorld.md)

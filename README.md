@@ -4,4 +4,4 @@
 
 ## Getting started
 
-* [Installation](/Installation.md)
+* [Installation](/documentation/Installation.md)

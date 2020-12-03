@@ -24,101 +24,65 @@
     $app->use('/users', $users);
 
     // routing
+    // $app->get('/', function ($req, $res) {
+    //     $res->render('index', [
+    //         'title' => 'Welcome to <span>Ekolo Builder</span>',
+    //         'message' => 'Flexible, quick and easy to develop'
+    //     ]);
+    // });
+
     $app->get('/', function ($req, $res) {
-        $res->render('index', [
-            'title' => 'Welcome to <span>Ekolo Builder</span>',
-            'message' => 'Flexible, quick and easy to develop'
-        ]);
-    });
+        $res->send('
+            <!DOCTYPE html>
+            <html lang="en">
 
-    $app->get('/list', function ($req, $res) {
-        $res->render('list', [
-            'users' => [
-                [
-                    'id' => 1,
-                    'name' => "Ambulasi",
-                    'firstName' => "Clovis",
-                ],
-                [
-                    'id' => 2,
-                    'name' => "Ambulasi",
-                    'firstName' => "Divine",
-                ],
-                [
-                    'id' => 3,
-                    'name' => "Mampuya",
-                    'firstName' => "Gladis",
-                ],
-                [
-                    'id' => 4,
-                    'name' => "Mampuya",
-                    'firstName' => "Gloria",
-                ],
-                [
-                    'id' => 5,
-                    'name' => "Etokila",
-                    'firstName' => "Chico",
-                ],
-                [
-                    'id' => 6,
-                    'name' => "Etokila",
-                    'firstName' => "Diani",
-                ]
-            ]
-        ]);
-    });
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Welcome to Ekolo Builder</title>
+                <style>
+                    body {
+                    padding: 5% 10%;
+                    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+                    sans-serif;
+                    }
+                    .btn {
+                    padding: 5px 15px;
+                    }
 
-     $app->get('/list/:id', function ($req, $res) {
-        
-        $users = [
-            [
-                'id' => 1,
-                'name' => "Ambulasi",
-                'firstName' => "Clovis",
-            ],
-            [
-                'id' => 2,
-                'name' => "Ambulasi",
-                'firstName' => "Divine",
-            ],
-            [
-                'id' => 3,
-                'name' => "Mampuya",
-                'firstName' => "Gladis",
-            ],
-            [
-                'id' => 4,
-                'name' => "Mampuya",
-                'firstName' => "Gloria",
-            ],
-            [
-                'id' => 5,
-                'name' => "Etokila",
-                'firstName' => "Chico",
-            ],
-            [
-                'id' => 6,
-                'name' => "Etokila",
-                'firstName' => "Diani",
-            ]
-        ];
+                    .btn-primary {
+                    border: 1px solid rgb(37, 61, 170);
+                    background-color: rgb(37, 61, 170);
+                    color: #ffffff;
+                    text-decoration: none;
+                    }
 
-        $res->render('detail', [
-            'user' => $users[$req->params->id]
-        ]);
-    });
+                    .btn-primary:hover {
+                    transition: all linear .04s;
+                    background-color: rgb(4, 33, 161);
+                    }
 
-    $app->post('/list', function (Request $req, Response $res) {
-        $rules = [
-            'name' => 'required|min:5|field:Nom de famille',
-            'firstName' => 'required|max:2|field:Prénom'
-        ];
+                    .title span {
+                    color: rgb(4, 33, 161) !important;
+                    }
 
-        if ($req->validator()->verify($rules)) {
-            echo "TOut est cool";
-        }else {
-            debug(session("errors"));
-        }
+                    .text-primary {
+                    color: rgb(37, 61, 170) !important;
+                    }
+                </style>
+            </head>
+
+            <body>
+                <h1 class="title">Welcome to <span>Ekolo Builder</span></h1>
+                <p>Flexible, quick and easy to develop</p>
+
+                <p>Please click on the link below to view the documentantion</p>
+
+                <p><a href="https://github.com/ekolo-builder/ekolo" class="btn btn-primary">Documentation</a></p>
+            </body>
+
+            </html>
+        ');
     });
 
     // error handler
