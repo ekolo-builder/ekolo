@@ -111,7 +111,7 @@
     $app->post('/list', function (Request $req, Response $res) {
         $rules = [
             'name' => 'required|min:5|field:Nom de famille',
-            'firstName' => 'required|max:2'
+            'firstName' => 'required|max:2|field:Prénom'
         ];
 
         if ($req->validator()->verify($rules)) {
