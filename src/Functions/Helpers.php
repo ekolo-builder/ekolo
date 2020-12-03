@@ -175,7 +175,7 @@
 
     if (!function_exists('request')) {
         /**
-         * Permet de renvoyer l'instance de Ekolo\Framework\Http\Request
+         * Permet de renvoyer l'instance de Ekolo\Builder\Http\Request
          * @return Request $request
          */
         function request() {
@@ -185,7 +185,7 @@
 
     if (!function_exists('response')) {
         /**
-         * Permet de renvoyer l'instance de Ekolo\Framework\Http\Response
+         * Permet de renvoyer l'instance de Ekolo\Builder\Http\Response
          * @return Response $response
          */
         function response() {
