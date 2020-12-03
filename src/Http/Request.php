@@ -23,6 +23,10 @@ class Request extends HTTPRequest
      */
     protected $validator;
 
+    /**
+     * Instance of validator
+     * @return Validator
+     */
     public function validator()
     {
         return $this->validator;
