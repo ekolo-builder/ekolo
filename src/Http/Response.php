@@ -84,7 +84,7 @@
         public function render(string $view, array $vars = [], int $status = null, array $headers = [])
         {
             $vars += $this->vars;
-
+            
             $this->setVars($vars);
 
 			if (!empty($vars)) {
